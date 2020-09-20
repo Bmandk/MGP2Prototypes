@@ -20,14 +20,14 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        /*float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.unscaledDeltaTime;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);*/
         
-        float horizontal = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float horizontal = Input.GetAxis("Mouse X") * mouseSensitivity * Time.unscaledDeltaTime;
         target.transform.Rotate(0, horizontal, 0);
  
         float desiredAngle = target.transform.eulerAngles.y;

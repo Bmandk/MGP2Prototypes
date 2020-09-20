@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CharacterController))]
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 velocity;
     private bool isGrounded;
 
+    [SerializeField]
     private Vector3 respawnPosition;
 
     private CharacterController cc;
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = 0f;
         }
         
         float x = Input.GetAxisRaw("Horizontal");
@@ -46,6 +48,25 @@ public class PlayerController : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         cc.Move(velocity);
+
+        if (Input.GetKey(KeyCode.LeftShift))
+            Time.timeScale = 5f;
+        else
+        {
+            Time.timeScale = 1f;
+        }
+        
+        int n = -1;
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            n = 0;
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            n = 1;
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            n = 2;
+        
+        if (n != -1)
+            SceneManager.LoadScene(n);
     }
 
     public void Die()

@@ -1,0 +1,7 @@
+Can have small lightzones which prevent player from losing light
+Can have bigger shrines where player can recharge their light (with breathing?)
+Can mix between darkened areas and completely dark areas
+Have to not let the player be able to light up while in darkness
+-Fumes won't work well, because of visibility issues
+--If we can find another solution, it might work
+Collectables give players a choice - Should I grab it or continue?
