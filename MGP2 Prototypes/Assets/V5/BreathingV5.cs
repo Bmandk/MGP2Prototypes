@@ -1,14 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 public class BreathingV5 : MonoBehaviour
 {
     [FormerlySerializedAs("lightRate")]
-    public float collectibleGain = 10f;
+    public float lightGainRate = 10f;
     public float lightLoseRate = 1.5f;
     [FormerlySerializedAs("maxLight")]
     public float maxLightRange = 10f;
     public float minLightRange = 1f;
+    
+    public float maxZoneRange = 7.139219f;
+    public float zoneGainRate = 5f;
     
     private float currentLightRange;
     private Light playerLight;
@@ -34,7 +40,7 @@ public class BreathingV5 : MonoBehaviour
         float l = 0;
 
         if (isInLight)
-            l = 0;
+            l = lightGainRate;
         else
             l = -lightLoseRate;
 
@@ -55,20 +61,28 @@ public class BreathingV5 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("LightZone"))
+        if (other.CompareTag("LightZone") || other.CompareTag("Crystal"))
         {
             isInLight = true;
         }
-        else if (other.CompareTag("Collectible"))
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Crystal"))
         {
-            currentLightRange += collectibleGain;
-            other.gameObject.SetActive(false);
+            Light l = other.GetComponentInChildren<Light>();
+
+            if (l.range < maxZoneRange)
+            {
+                l.range += zoneGainRate * Time.fixedDeltaTime;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("LightZone"))
+        if (other.CompareTag("LightZone") || other.CompareTag("Crystal"))
         {
             isInLight = false;
         }

@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2002454077427913962}
-  mouseSensitivity: 100
+  mouseSensitivity: 200
 --- !u!81 &1408339543
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2006,7 +2006,7 @@ PrefabInstance:
     - target: {fileID: 3390832770481113947, guid: 489fe8d17cbe69944b924a1f48fc3cb2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.62
+      value: -4.32
       objectReference: {fileID: 0}
     - target: {fileID: 3390832770481113947, guid: 489fe8d17cbe69944b924a1f48fc3cb2,
         type: 3}
@@ -2016,7 +2016,7 @@ PrefabInstance:
     - target: {fileID: 3390832770481113947, guid: 489fe8d17cbe69944b924a1f48fc3cb2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.17
+      value: 14.56
       objectReference: {fileID: 0}
     - target: {fileID: 3390832770481113947, guid: 489fe8d17cbe69944b924a1f48fc3cb2,
         type: 3}
