@@ -67,6 +67,8 @@ public class PlayerController : MonoBehaviour
             n = 1;
         else if (Input.GetKeyDown(KeyCode.Alpha3))
             n = 2;
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+            n = 3;
         
         if (n != -1)
             SceneManager.LoadScene(n);
