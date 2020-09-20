@@ -22,11 +22,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 respawnPosition;
 
     private CharacterController cc;
+
+    private GameObject[] collectibles;
     
     // Start is called before the first frame update
     void Start()
     {
         cc = GetComponent<CharacterController>();
+        collectibles = GameObject.FindGameObjectsWithTag("Collectible");
     }
 
     // Update is called once per frame
@@ -72,6 +75,11 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         transform.position = respawnPosition;
+
+        foreach (var collectible in collectibles)
+        {
+            collectible.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-public class BreathingV3 : MonoBehaviour
+public class BreathingV5 : MonoBehaviour
 {
     [FormerlySerializedAs("lightRate")]
-    public float lightGainRate = 10f;
+    public float collectibleGain = 10f;
     public float lightLoseRate = 1.5f;
     [FormerlySerializedAs("maxLight")]
     public float maxLightRange = 10f;
@@ -37,7 +34,7 @@ public class BreathingV3 : MonoBehaviour
         float l = 0;
 
         if (isInLight)
-            l = lightGainRate;
+            l = 0;
         else
             l = -lightLoseRate;
 
@@ -61,6 +58,11 @@ public class BreathingV3 : MonoBehaviour
         if (other.CompareTag("LightZone"))
         {
             isInLight = true;
+        }
+        else if (other.CompareTag("Collectible"))
+        {
+            currentLightRange += collectibleGain;
+            other.gameObject.SetActive(false);
         }
     }
 

@@ -11,6 +11,7 @@ public class BreathingV1 : MonoBehaviour
     public float lightLoseRate = 1.5f;
     [FormerlySerializedAs("maxLight")]
     public float maxLightRange = 10f;
+    public float minLightRange = 1f;
     
     private float currentLightRange;
     private Light playerLight;
@@ -41,9 +42,9 @@ public class BreathingV1 : MonoBehaviour
         {
             currentLightRange = maxLightRange;
         }
-        else if (currentLightRange <= 0)
+        else if (currentLightRange <= minLightRange)
         {
-            currentLightRange = 0;
+            currentLightRange = minLightRange;
 
             if (!isInLight)
             {

@@ -8,6 +8,7 @@ public class BreathingV4 : MonoBehaviour
     public float lightLoseRate = 1.5f;
     [FormerlySerializedAs("maxLight")]
     public float maxLightRange = 10f;
+    public float minLightRange = 1f;
     
     private float currentLightRange;
     private Light playerLight;
@@ -43,7 +44,7 @@ public class BreathingV4 : MonoBehaviour
         {
             currentLightRange = maxLightRange;
         }
-        else if (currentLightRange <= 0)
+        else if (currentLightRange <= minLightRange)
         {
             currentLightRange = maxLightRange;
             pc.Die();
@@ -61,7 +62,7 @@ public class BreathingV4 : MonoBehaviour
         else if (other.CompareTag("Collectible"))
         {
             currentLightRange += collectibleGain;
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 
